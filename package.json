@@ -1,6 +1,6 @@
 {
   "name": "bs-react-error-boundary",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "keywords": [
     "BuckleScript"
@@ -15,6 +15,10 @@
     "clean": "bsb -clean-world",
     "format": "bsrefmt --in-place **/*.re"
   },
+  "files": [
+    "src/",
+    "bsconfig.json"
+  ],
   "peerDependencies": {
     "react-error-boundary": "^1.2.5",
     "reason-react": "^0.7.1"
