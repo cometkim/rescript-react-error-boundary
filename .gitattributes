@@ -3,6 +3,6 @@ yarn.lock linguist-generated
 *.re linguist-language=Reason
 *.rei linguist-language=Reason
 
-# *.bs.js linguist-generated
+*.bs.js linguist-generated
 
 * text eol=lf
