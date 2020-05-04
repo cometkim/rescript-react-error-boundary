@@ -4,14 +4,14 @@ type renderProp('a) = [
   | `element(React.element)
 ];
 
-type onerror = (~error: Js.Exn.t, ~componentStack: string) => unit;
+type onError = (Js.Exn.t, string) => unit;
 
 [@bs.obj]
 external makeErrorBoundaryProps:
   (
     ~children: 'children=?,
     ~fallbackComponent: 'union_rttf=?,
-    ~onError: onerror=?,
+    ~onError: onError=?,
     unit
   ) =>
   _;
@@ -19,12 +19,8 @@ external makeErrorBoundaryProps:
 let makeProps =
     (
       ~children: option('children)=?,
-      ~fallbackComponent: option(renderProp('a))=Some(
-                                                     `render(
-                                                       ErrorBoundaryFallbackComponent.make,
-                                                     ),
-                                                   ),
-      ~onError: option(onerror)=?,
+      ~fallbackComponent: option(renderProp('a))=?,
+      ~onError: option(onError)=?,
       (),
     ) =>
   makeErrorBoundaryProps(~children?, ~fallbackComponent?, ~onError?, ());
