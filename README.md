@@ -1,24 +1,26 @@
-# Basic Reason Template
+# bs-react-error-boundary
 
-Hello! This project allows you to quickly get started with Reason and BuckleScript. If you wanted a more sophisticated version, try the `react` template (`bsb -theme react -init .`).
+BuckleScript binding for [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
 
-# Build
+## Example
 
-```bash
-# for yarn
-yarn build
+```re
+open BsReactErrorBoundary;
 
-# for npm
-npm run build
+[@react.component]
+let make = () => {
+  <div>
+    <ErrorBoundary
+      onError={(error, _) =>
+        Js.Console.error(
+          switch (error->Js.Exn.message) {
+          | Some(message) => message
+          | None => "Unknown error occured while rendering"
+          },
+        )
+      }>
+      <App/>
+    </ErrorBoundary>
+  </div>;
+};
 ```
-
-# Build + Watch
-
-```bash
-# for yarn
-yarn start
-
-# for npm
-npm run start
-```
-
