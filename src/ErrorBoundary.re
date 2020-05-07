@@ -13,7 +13,6 @@ type fallbackProps = {
 }
 
 type fallback = [
-  | `string(string)
   | `element(React.element)
   | `render(React.component(fallbackProps))
 ];
@@ -53,15 +52,6 @@ let makeProps =
       (),
     ) => {
       switch (fallback) {
-        | `string(message) => makeErrorBoundaryPropsWithFallback(
-          ~children?,
-          ~fallback={message->React.string},
-          ~resetKeys?,
-          ~onError?,
-          ~onReset?,
-          ~onResetKeysChange?,
-          (),
-        )
         | `element(fallback) => makeErrorBoundaryPropsWithFallback(
           ~children?,
           ~fallback,
