@@ -2,18 +2,71 @@
 
 import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 
-function makeProps(children, fallbackComponent, onError, param) {
-  var tmp = { };
-  if (children !== undefined) {
-    tmp.children = Caml_option.valFromOption(children);
+function makeProps(children, fallback, resetKeys, onError, onReset, onResetKeysChange, param) {
+  var variant = fallback[0];
+  if (variant !== 106213052) {
+    if (variant >= 288368849) {
+      var tmp = {
+        fallback: fallback[1]
+      };
+      if (children !== undefined) {
+        tmp.children = Caml_option.valFromOption(children);
+      }
+      if (resetKeys !== undefined) {
+        tmp.resetKeys = Caml_option.valFromOption(resetKeys);
+      }
+      if (onError !== undefined) {
+        tmp.onError = Caml_option.valFromOption(onError);
+      }
+      if (onReset !== undefined) {
+        tmp.onReset = Caml_option.valFromOption(onReset);
+      }
+      if (onResetKeysChange !== undefined) {
+        tmp.onResetKeysChange = Caml_option.valFromOption(onResetKeysChange);
+      }
+      return tmp;
+    } else {
+      var tmp$1 = {
+        fallbackRender: fallback[1]
+      };
+      if (children !== undefined) {
+        tmp$1.children = Caml_option.valFromOption(children);
+      }
+      if (resetKeys !== undefined) {
+        tmp$1.resetKeys = Caml_option.valFromOption(resetKeys);
+      }
+      if (onError !== undefined) {
+        tmp$1.onError = Caml_option.valFromOption(onError);
+      }
+      if (onReset !== undefined) {
+        tmp$1.onReset = Caml_option.valFromOption(onReset);
+      }
+      if (onResetKeysChange !== undefined) {
+        tmp$1.onResetKeysChange = Caml_option.valFromOption(onResetKeysChange);
+      }
+      return tmp$1;
+    }
+  } else {
+    var tmp$2 = {
+      fallback: fallback[1]
+    };
+    if (children !== undefined) {
+      tmp$2.children = Caml_option.valFromOption(children);
+    }
+    if (resetKeys !== undefined) {
+      tmp$2.resetKeys = Caml_option.valFromOption(resetKeys);
+    }
+    if (onError !== undefined) {
+      tmp$2.onError = Caml_option.valFromOption(onError);
+    }
+    if (onReset !== undefined) {
+      tmp$2.onReset = Caml_option.valFromOption(onReset);
+    }
+    if (onResetKeysChange !== undefined) {
+      tmp$2.onResetKeysChange = Caml_option.valFromOption(onResetKeysChange);
+    }
+    return tmp$2;
   }
-  if (fallbackComponent !== undefined) {
-    tmp.fallbackComponent = Caml_option.valFromOption(fallbackComponent);
-  }
-  if (onError !== undefined) {
-    tmp.onError = Caml_option.valFromOption(onError);
-  }
-  return tmp;
 }
 
 export {

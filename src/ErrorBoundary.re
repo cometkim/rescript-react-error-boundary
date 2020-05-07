@@ -1,29 +1,87 @@
-type renderProp('a) = [
-  | `string(string)
-  | `render(React.component('a))
-  | `element(React.element)
-];
+type props;
 
+type resetKeys('a) = array('a);
+
+type onResetKeysChange('a) = (resetKeys('a), resetKeys('a)) => unit;
+type onReset = unit => unit;
 type onError = (Js.Exn.t, string) => unit;
 
+type fallbackProps = {
+  error: option(Js.Exn.t),
+  componentStack: option(string),
+  resetErrorBoundary: unit => unit,
+}
+
+type fallback = [
+  | `string(string)
+  | `element(React.element)
+  | `render(React.component(fallbackProps))
+];
+
 [@bs.obj]
-external makeErrorBoundaryProps:
+external makeErrorBoundaryPropsWithRender:
   (
     ~children: 'children=?,
-    ~fallbackComponent: 'union_rttf=?,
+    ~fallbackRender: fallbackProps => React.element,
+    ~resetKeys: resetKeys('a)=?,
     ~onError: onError=?,
-    unit
-  ) =>
-  _;
+    ~onReset: onReset=?,
+    ~onResetKeysChange: onResetKeysChange('a)=?,
+    unit,
+  ) => props;
+
+[@bs.obj]
+external makeErrorBoundaryPropsWithFallback:
+  (
+    ~children: 'children=?,
+    ~fallback: React.element,
+    ~resetKeys: resetKeys('a)=?,
+    ~onError: onError=?,
+    ~onReset: onReset=?,
+    ~onResetKeysChange: onResetKeysChange('a)=?,
+    unit,
+  ) => props;
 
 let makeProps =
     (
-      ~children: option('children)=?,
-      ~fallbackComponent: option(renderProp('a))=?,
+      ~children=?,
+      ~fallback: fallback,
+      ~resetKeys: option(resetKeys('a))=?,
       ~onError: option(onError)=?,
+      ~onReset: option(onReset)=?,
+      ~onResetKeysChange: option(onResetKeysChange('a))=?,
       (),
-    ) =>
-  makeErrorBoundaryProps(~children?, ~fallbackComponent?, ~onError?, ());
+    ) => {
+      switch (fallback) {
+        | `string(message) => makeErrorBoundaryPropsWithFallback(
+          ~children?,
+          ~fallback={message->React.string},
+          ~resetKeys?,
+          ~onError?,
+          ~onReset?,
+          ~onResetKeysChange?,
+          (),
+        )
+        | `element(fallback) => makeErrorBoundaryPropsWithFallback(
+          ~children?,
+          ~fallback,
+          ~resetKeys?,
+          ~onError?,
+          ~onReset?,
+          ~onResetKeysChange?,
+          (),
+        )
+        | `render(fallbackRender) => makeErrorBoundaryPropsWithRender(
+          ~children?,
+          ~fallbackRender,
+          ~resetKeys?,
+          ~onError?,
+          ~onReset?,
+          ~onResetKeysChange?,
+          (),
+        )
+      }
+    };
 
 [@bs.module "react-error-boundary"]
 external make: React.component('a) = "default";
