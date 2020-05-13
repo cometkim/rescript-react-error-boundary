@@ -2,6 +2,23 @@
 
 BuckleScript binding for [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
 
+## Install
+
+```bash
+yarn add react-error-boundary bs-react-error-boundary
+
+## or
+pnpm add react-error-boundary bs-react-error-boundary
+```
+
+And add it into your `bsconfig.json`
+
+```json
+  "bs-dependencies": [
+    "bs-react-error-boundary"
+  ]
+```
+
 ## Example
 
 ```re
