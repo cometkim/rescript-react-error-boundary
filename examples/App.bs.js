@@ -6,12 +6,12 @@ import * as ErrorBoundary$BsReactErrorBoundary from "../src/ErrorBoundary.bs.js"
 
 function App(Props) {
   var arg = (function (error, param) {
-      var match = error.message;
-      console.error(match !== undefined ? match : "Unknown error occured while rendering");
-      return /* () */0;
+      var message = error.message;
+      console.error(message !== undefined ? message : "Unknown error occured while rendering");
+      
     });
   return React.createElement("div", undefined, React.createElement(ReactErrorBoundary.default, (function (param) {
-                    return ErrorBoundary$BsReactErrorBoundary.makeProps("Succeed!", param, undefined, arg, undefined, undefined, /* () */0);
+                    return ErrorBoundary$BsReactErrorBoundary.makeProps("Succeed!", param, undefined, arg, undefined, undefined, undefined);
                   })));
 }
 

@@ -21,12 +21,12 @@
     "bsconfig.json"
   ],
   "peerDependencies": {
-    "react-error-boundary": "^1.2.5",
+    "react-error-boundary": "^2.2.1",
     "reason-react": "^0.7.1"
   },
   "devDependencies": {
-    "bs-platform": "^7.2.2",
-    "react-error-boundary": "^1.2.5",
+    "bs-platform": "^7.3.2",
+    "react-error-boundary": "^2.2.1",
     "reason-react": "^0.7.1"
   }
 }
