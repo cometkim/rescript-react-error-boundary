@@ -2,6 +2,7 @@
 .merlin
 .bsb.lock
 *.log
+*.bs.js
 /lib/bs/
 /node_modules/
 
