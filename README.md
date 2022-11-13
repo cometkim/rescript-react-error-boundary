@@ -21,7 +21,7 @@ And add it into your `bsconfig.json`
 
 ## Example
 
-```re
+```res
 open RescriptReactErrorBoundary;
 
 @react.component
