@@ -6,3 +6,6 @@ yarn.lock linguist-generated
 *.bs.js linguist-generated
 
 * text eol=lf
+
+.yarn/**          linguist-vendored
+.yarn/releases/*  binary
