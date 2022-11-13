@@ -1,33 +1,31 @@
 {
-  "name": "bs-react-error-boundary",
-  "version": "2.0.0",
+  "name": "rescript-react-error-boundary",
+  "version": "1.0.0",
   "license": "MIT",
   "keywords": [
-    "BuckleScript"
+    "rescript",
+    "rescript-binding",
+    "react"
   ],
   "author": {
     "name": "Hyeseong Kim",
-    "email": "cometkim.kr@gmail.com"
+    "email": "hey@hyeseong.kim"
   },
   "scripts": {
-    "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world",
-    "format": "bsrefmt --in-place **/*.re",
-    "prepublishOnly": "yarn build"
+    "build": "rescript build",
+    "start": "rescript build -w",
+    "clean": "rescript clean"
   },
   "files": [
     "src/",
     "bsconfig.json"
   ],
-  "peerDependencies": {
-    "react-error-boundary": "^2.2.1",
-    "reason-react": "^0.7.1"
-  },
+  "packageManager": "yarn@3.2.4",
   "devDependencies": {
-    "bs-platform": "^7.3.2",
-    "react-error-boundary": "^2.2.1",
-    "reason-react": "^0.7.1"
+    "@rescript/react": "^0.10.3",
+    "rescript": "^10.0.1"
   },
-  "packageManager": "yarn@3.2.4"
+  "dependencies": {
+    "react-error-boundary": "^3.1.4"
+  }
 }

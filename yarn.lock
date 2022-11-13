@@ -5,7 +5,7 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@babel/runtime@npm:^7.11.2":
+"@babel/runtime@npm:^7.12.5":
   version: 7.20.1
   resolution: "@babel/runtime@npm:7.20.1"
   dependencies:
@@ -14,88 +14,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bs-platform@npm:^7.3.2":
-  version: 7.3.2
-  resolution: "bs-platform@npm:7.3.2"
-  bin:
-    bsb: bsb
-    bsc: bsc
-    bsrefmt: bsrefmt
-    bstracing: lib/bstracing
-  checksum: 00ef222f29483b338bd94107bf8ab102c0df36d3832f17d66db7ae0934a7fe71b74c03c8099e162660fc10cf71d848a5c354ffe60aed85239a00b62e203b1fb9
-  languageName: node
-  linkType: hard
-
-"bs-react-error-boundary@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "bs-react-error-boundary@workspace:."
-  dependencies:
-    bs-platform: ^7.3.2
-    react-error-boundary: ^2.2.1
-    reason-react: ^0.7.1
+"@rescript/react@npm:^0.10.3":
+  version: 0.10.3
+  resolution: "@rescript/react@npm:0.10.3"
   peerDependencies:
-    react-error-boundary: ^2.2.1
-    reason-react: ^0.7.1
-  languageName: unknown
-  linkType: soft
-
-"js-tokens@npm:^3.0.0 || ^4.0.0":
-  version: 4.0.0
-  resolution: "js-tokens@npm:4.0.0"
-  checksum: 8a95213a5a77deb6cbe94d86340e8d9ace2b93bc367790b260101d2f36a2eaf4e4e22d9fa9cf459b38af3a32fb4190e638024cf82ec95ef708680e405ea7cc78
-  languageName: node
-  linkType: hard
-
-"loose-envify@npm:^1.1.0":
-  version: 1.4.0
-  resolution: "loose-envify@npm:1.4.0"
-  dependencies:
-    js-tokens: ^3.0.0 || ^4.0.0
-  bin:
-    loose-envify: cli.js
-  checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
-  languageName: node
-  linkType: hard
-
-"react-dom@npm:>=16.8.1":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
-  dependencies:
-    loose-envify: ^1.1.0
-    scheduler: ^0.23.0
-  peerDependencies:
-    react: ^18.2.0
-  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
-  languageName: node
-  linkType: hard
-
-"react-error-boundary@npm:^2.2.1":
-  version: 2.3.2
-  resolution: "react-error-boundary@npm:2.3.2"
-  dependencies:
-    "@babel/runtime": ^7.11.2
-  peerDependencies:
-    react: ">=16.13.1"
-  checksum: 16d325bc244e83774818f18134b62b3f5e2b0f232b9c93eedecf4f71ba753c7213f056936931256bca98f2a8d1ca433b599ff8c072b1a15bb0243a782db9078c
-  languageName: node
-  linkType: hard
-
-"react@npm:>=16.8.1":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
-  dependencies:
-    loose-envify: ^1.1.0
-  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
-  languageName: node
-  linkType: hard
-
-"reason-react@npm:^0.7.1":
-  version: 0.7.1
-  resolution: "reason-react@npm:0.7.1"
-  dependencies:
     react: ">=16.8.1"
     react-dom: ">=16.8.1"
-  checksum: 98e1ed2c9e77360e2a148cb91d3736220bffc7898b39d02cc8e5ce48ee3f21c110f83065cc6dec7ac4159a7a90a2b135ef7903dce7c2c2d32134adc85e9f919e
+  checksum: 8561282f78b87c73c864b21d7f94f23545b6e7488167370aab2effa9268bab14f78b948dd0de4b84580467eff7c55c7dd1d080726ec63cb5b2dde030d37a1fbf
+  languageName: node
+  linkType: hard
+
+"react-error-boundary@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "react-error-boundary@npm:3.1.4"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+  peerDependencies:
+    react: ">=16.13.1"
+  checksum: f36270a5d775a25c8920f854c0d91649ceea417b15b5bc51e270a959b0476647bb79abb4da3be7dd9a4597b029214e8fe43ea914a7f16fa7543c91f784977f1b
   languageName: node
   linkType: hard
 
@@ -106,11 +42,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "scheduler@npm:0.23.0"
+"rescript-react-error-boundary@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "rescript-react-error-boundary@workspace:."
   dependencies:
-    loose-envify: ^1.1.0
-  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
+    "@rescript/react": ^0.10.3
+    react-error-boundary: ^3.1.4
+    rescript: ^10.0.1
+  languageName: unknown
+  linkType: soft
+
+"rescript@npm:^10.0.1":
+  version: 10.0.1
+  resolution: "rescript@npm:10.0.1"
+  bin:
+    bsc: bsc
+    bsrefmt: bsrefmt
+    bstracing: lib/bstracing
+    rescript: rescript
+  checksum: 59ae153c7f6c8ab7130becffc0ae6bcf0cfb21517ff6587548d74ed68fcd5f4e48f14e5de823f71edbc4d0f65b629c132d2a553467bd7c8c2f31ed9d5fb2881c
   languageName: node
   linkType: hard
