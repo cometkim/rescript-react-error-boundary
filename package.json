@@ -17,7 +17,7 @@
     "clean": "rescript clean"
   },
   "files": [
-    "src/",
+    "src/*.res",
     "bsconfig.json"
   ],
   "peerDependencies": {
