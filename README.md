@@ -22,7 +22,7 @@ And add it into your `bsconfig.json`
 ## Example
 
 ```res
-open RescriptReactErrorBoundary;
+open RescriptReactErrorBoundary
 
 @react.component
 let make = () => {
@@ -38,8 +38,8 @@ let make = () => {
       }>
       <App/>
     </ErrorBoundary>
-  </div>;
-};
+  </div>
+}
 ```
 
 ## LICENSE
