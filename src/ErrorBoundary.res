@@ -2,55 +2,80 @@ type props
 
 type resetKeys<'a> = array<'a>
 
-type onResetKeysChange<'a> = (resetKeys<'a>, resetKeys<'a>) => unit
-type onReset = unit => unit
-type onError = (Js.Exn.t, string) => unit
+type componentInfo = {componentStack: string}
 
-type fallbackProps = {
-  error: option<Js.Exn.t>,
-  componentStack: option<string>,
-  resetErrorBoundary: unit => unit,
+type onResetKeysChange<'a> = (option<resetKeys<'a>>, option<resetKeys<'a>>) => unit
+type onReset<'a> = resetKeys<'a> => unit
+type onError = (Js.Exn.t, componentInfo) => unit
+
+type fallbackProps<'a> = {
+  error: Js.Exn.t,
+  resetErrorBoundary: resetKeys<'a> => unit,
 }
+type fallbackElement = React.element
+type fallbackComponent<'a> = React.component<fallbackProps<'a>>
+type fallbackRender<'a> = fallbackProps<'a> => React.element
 
-type fallback = [
-  | #element(React.element)
-  | #render(React.component<fallbackProps>)
-]
+type fallback<'a> =
+  | Element(fallbackElement)
+  | Component(fallbackComponent<'a>)
+  | Render(fallbackRender<'a>)
 
 @obj
-external makeErrorBoundaryPropsWithRender: (
+external makeErrorBoundaryPropsWithElement: (
   ~children: 'children=?,
-  ~fallbackRender: fallbackProps => React.element,
+  ~fallback: React.element,
   ~resetKeys: resetKeys<'a>=?,
   ~onError: onError=?,
-  ~onReset: onReset=?,
+  ~onReset: onReset<'a>=?,
   ~onResetKeysChange: onResetKeysChange<'a>=?,
   unit,
 ) => props = ""
 
 @obj
-external makeErrorBoundaryPropsWithFallback: (
+external makeErrorBoundaryPropsWithComponent: (
   ~children: 'children=?,
-  ~fallback: React.element,
+  ~\"FallbackComponent": fallbackComponent<'a>=?,
   ~resetKeys: resetKeys<'a>=?,
   ~onError: onError=?,
-  ~onReset: onReset=?,
+  ~onReset: onReset<'a>=?,
+  ~onResetKeysChange: onResetKeysChange<'a>=?,
+  unit,
+) => props = ""
+
+@obj
+external makeErrorBoundaryPropsWithRender: (
+  ~children: 'children=?,
+  ~fallbackRender: fallbackProps<'a> => React.element,
+  ~resetKeys: resetKeys<'a>=?,
+  ~onError: onError=?,
+  ~onReset: onReset<'a>=?,
+  ~onResetKeysChange: onResetKeysChange<'a>=?,
+  unit,
+) => props = ""
+
+@obj
+external makeErrorBoundaryPropsWithoutFallback: (
+  ~children: 'children=?,
+  ~resetKeys: resetKeys<'a>=?,
+  ~onError: onError=?,
+  ~onReset: onReset<'a>=?,
   ~onResetKeysChange: onResetKeysChange<'a>=?,
   unit,
 ) => props = ""
 
 let makeProps = (
   ~children=?,
-  ~fallback: fallback,
+  ~fallback: option<fallback<'a>>=?,
   ~resetKeys: option<resetKeys<'a>>=?,
   ~onError: option<onError>=?,
-  ~onReset: option<onReset>=?,
+  ~onReset: option<onReset<'a>>=?,
   ~onResetKeysChange: option<onResetKeysChange<'a>>=?,
   (),
 ) => {
   switch fallback {
-  | #element(fallback) =>
-    makeErrorBoundaryPropsWithFallback(
+  | Some(Element(fallback)) =>
+    makeErrorBoundaryPropsWithElement(
       ~children?,
       ~fallback,
       ~resetKeys?,
@@ -59,10 +84,29 @@ let makeProps = (
       ~onResetKeysChange?,
       (),
     )
-  | #render(fallbackRender) =>
+  | Some(Component(\"FallbackComponent")) =>
+    makeErrorBoundaryPropsWithComponent(
+      ~children?,
+      ~\"FallbackComponent",
+      ~resetKeys?,
+      ~onError?,
+      ~onReset?,
+      ~onResetKeysChange?,
+      (),
+    )
+  | Some(Render(fallbackRender)) =>
     makeErrorBoundaryPropsWithRender(
       ~children?,
       ~fallbackRender,
+      ~resetKeys?,
+      ~onError?,
+      ~onReset?,
+      ~onResetKeysChange?,
+      (),
+    )
+  | None =>
+    makeErrorBoundaryPropsWithoutFallback(
+      ~children?,
       ~resetKeys?,
       ~onError?,
       ~onReset?,
@@ -73,4 +117,4 @@ let makeProps = (
 }
 
 @module("react-error-boundary")
-external make: React.component<'a> = "default"
+external make: React.component<'a> = "ErrorBoundary"
