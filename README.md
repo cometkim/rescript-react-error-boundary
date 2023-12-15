@@ -1,30 +1,30 @@
-# bs-react-error-boundary
+# rescript-react-error-boundary
 
-BuckleScript binding for [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
+[![NPM Package](https://img.shields.io/npm/v/rescript-react-error-boundary)](https://www.npmjs.com/package/rescript-react-error-boundary)
+[![LICENSE - MIT](https://img.shields.io/github/license/cometkim/rescript-react-error-boundary)](#LICENSE)
 
-## Install
+ReScript binding for [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
+
+## Installation
 
 ```bash
-yarn add react-error-boundary bs-react-error-boundary
-
-## or
-pnpm add react-error-boundary bs-react-error-boundary
+yarn add rescript-react-error-boundary
 ```
 
 And add it into your `bsconfig.json`
 
 ```json
   "bs-dependencies": [
-    "bs-react-error-boundary"
+    "rescript-react-error-boundary"
   ]
 ```
 
 ## Example
 
-```re
-open BsReactErrorBoundary;
+```res
+open RescriptReactErrorBoundary
 
-[@react.component]
+@react.component
 let make = () => {
   <div>
     <ErrorBoundary
@@ -38,6 +38,10 @@ let make = () => {
       }>
       <App/>
     </ErrorBoundary>
-  </div>;
-};
+  </div>
+}
 ```
+
+## LICENSE
+
+MIT
